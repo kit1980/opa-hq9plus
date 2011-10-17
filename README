@@ -8,5 +8,8 @@ This simple program uses several interesting Opa features:
 
 To compile just run "./compile" or directly "opa hq9plus.opa".
 
+Compiler message "Unused variable accumulator." is because "accumulator" isn't really used by design in HQ9+
+(but you can uncomment one line to print its value).
+
 Opa version used for developing and testing:
 Opa compiler (c) MLstate -- version S3.5 -- build 687
