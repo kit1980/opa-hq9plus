@@ -66,7 +66,13 @@ page() =
 
              <div>
                 <p>
-                    HQ9+ Interpreter in Opa language.
+                    <a href="http://progopedia.com/language/hq9-plus/">HQ9+</a> is a joke language  which has only 4 instructions and is thus capable of only 4 actions:
+                </>
+                <ul>
+                    <li><code>H</code> prints “Hello, World!”</li>
+                    <li><code>Q</code> prints the text of the source code (thus, single-command code “Q” is a quine)</li>
+                    <li><code>9</code> prints the lyrics of “99 Bottles of Beer”</li>
+                    <li><code>+</code> increments the accumulator (which you can’t access anyways)</li>
                 </>
              </>
 
