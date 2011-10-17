@@ -44,7 +44,7 @@ hq9plus_interpret() =
   (output, error) =
     match Parser.try_parse(hq9plus(Dom.get_value(#expr)), Dom.get_value(#expr)) with
     | {some=result} -> (<>{result}</>, <></>)
-    | {none} -> (<></>, <>Syntax error. Only symbols [HhQq9+] accepted.</>)
+    | {none} -> (<></>, <br /><div class="alert-message block-message error">Syntax error. Only symbols [HhQq9+] accepted.</>)
   do Dom.transform([#output <- output])
   do Dom.transform([#error <- error])
 
