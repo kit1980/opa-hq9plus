@@ -1,29 +1,9 @@
-// +-<>[].,
+// HQ9+ Interpreter in Opa language
 
 import stdlib.themes.bootstrap
 
-ws(p) = parser
-| Rule.ws res=p Rule.ws -> res
-
-calculator =
-  rec term = parser
-  | f={ws(Rule.float)} -> f
-  | {ws(parser "(")} ~expr {ws(parser ")")} -> expr
-  and factor = parser
-  | ~term "*" ~factor -> term * factor
-  | ~term "/" ~factor -> term / factor
-  | ~term -> term
-  and expr = parser
-  | ~factor "+" ~expr -> factor + expr
-  | ~factor "-" ~expr -> factor - expr
-  | ~factor -> factor
-  expr
-
-//bf_simple = parser res=[+-<>.] -> Text.from_character(res)
-
-//bf = parser 
-//     | res=bf_simple+ -> res
-
+// "99 Bottles of Beer" song
+// http://99-bottles-of-beer.net/lyrics.html
 song = 
   ~{lyrics ...} =
     for(
@@ -39,8 +19,10 @@ Take one down and pass it around, 1 bottle of beer on the wall.
 Take one down and pass it around, no more bottles of beer on the wall.
 
 No more bottles of beer on the wall, no more bottles of beer.
-Go to the store and buy some more, 99 bottles of beer on the wall."
+Go to the store and buy some more, 99 bottles of beer on the wall.\n"
 
+
+// main HQ9+ work, plusses just ignored
 hq9plus(source) = 
    rec expr = parser
    | [Hh] ~expr -> "Hello, world!\n{expr}"
@@ -50,21 +32,13 @@ hq9plus(source) =
    | "" -> ""
    expr
 
+// count plusses for hidden accumulator
 accumulate = 
    rec acc = parser
    | [+] ~acc -> acc + 1
    | [HhQq9] ~acc -> acc
    | "" -> 0
    acc
-
-calculate() =
-  (output, error) =
-    match Parser.try_parse(calculator, Dom.get_value(#expr)) with
-    | {some=result} -> (<>{4.0 + result}</>, <></>)
-    | {none} -> (<></>, <>Sorry, but I'm a simple calculator that only understands +, -, *, / and parentheses (...).</>)
-  do Dom.transform([#output <- output])
-  do Dom.transform([#error <- error])
-  void
 
 hq9plus_interpret() = 
   (output, error) =
@@ -74,11 +48,12 @@ hq9plus_interpret() =
   do Dom.transform([#output <- output])
   do Dom.transform([#error <- error])
 
+  // accumulator is just a hidded "feature" of HQ9+
   accumulator =
     match Parser.try_parse(accumulate, Dom.get_value(#expr)) with
     | {some=result} -> (result)
     | {none} -> (0)
-  do print("{accumulator}")
+  // do print("{accumulator}") // uncomment this line to see hidden value of accumulator
   void
 
 page() =
