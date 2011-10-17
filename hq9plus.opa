@@ -78,7 +78,7 @@ page() =
 
              <div class="form-stacked">
                   <label for="expr">Editor</>     
-                  <textarea id=#expr class="xxlarge" style="width:100%" rows=5>H</>
+                  <textarea id=#expr class="xxlarge" style="width:100%" rows=5>HQ9+</>
                   <span class="help-block">HQ9+ program source</>
 
                   <button class="btn primary" id=#run onclick={_ -> hq9plus_interpret()}>Run</>
