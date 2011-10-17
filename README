@@ -1,0 +1,12 @@
+HQ9+ (http://progopedia.com/language/hq9-plus/) Interpreter in Opa (http://opalang.org/) language.
+
+This simple program uses several interesting Opa features:
+- TRX parsing
+- support for Twitter Bootstrap framework
+- working with DOM
+- shorthand syntax for XML
+
+To compile just run "./compile" or directly "opa hq9plus.opa".
+
+Opa version used for developing and testing:
+Opa compiler (c) MLstate -- version S3.5 -- build 687
